@@ -1,14 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { PhotoContext } from '../../contexts/PhotoContext'
 import Slide from '../Slide/Slide'
 import './Slider.scss'
 
 const Slider = () => {
 
-    const { photos } = useContext(PhotoContext)
+    const { photos, leftArrow, rightArrow, translateValue } = useContext(PhotoContext)
 
     const slide = photos.map((photo) => (
-        <Slide key={photo.id} image={photo.photo} />
+        <Slide key={photo.id} image={photo.photo} text={photo.text} category={photo.category} />
     ))
 
     return (
@@ -16,9 +16,8 @@ const Slider = () => {
             <div className="slider__container">
                 {slide}
             </div>
-            <div className="slider__text">
-               
-            </div>
+            <button onClick={leftArrow}>strzałka w lewo</button>
+            <button onClick={rightArrow}>strzałka w prawo</button>  
         </div>
     )
 
