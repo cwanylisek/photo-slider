@@ -17,6 +17,8 @@ const PhotoContextProvider = (props) => {
 
     const [translateValue, setTranslate] = useState(0)
 
+    const [newImage, setNewImage] = useState({})
+
     const rightArrow = () => {
         if (photoIndex === photos.length - 1) {
             setIndex(0)
@@ -36,8 +38,13 @@ const PhotoContextProvider = (props) => {
         }
     }
 
+    const saveImage = (newImage) => {
+        setNewImage(newImage)
+        console.log(newImage, 'image in state')
+    }
+
     return (
-        <PhotoContext.Provider value={{ photos, rightArrow, leftArrow, photoIndex, translateValue }}>
+        <PhotoContext.Provider value={{ photos, rightArrow, leftArrow, photoIndex, translateValue, newImage, saveImage }}>
             {props.children}
         </PhotoContext.Provider>
     )

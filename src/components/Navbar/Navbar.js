@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import { PhotoContext } from '../../contexts/PhotoContext';
+import { PhotoContext } from '../../contexts/PhotoContext'
 import './Navbar.scss'
 
 const Navbar = () => {
 
-    const { photos } = useContext(PhotoContext);
+    const { photos } = useContext(PhotoContext)
 
     const categories = photos.map((photo) => <li key={photo.id}>{photo.category}</li>)
 

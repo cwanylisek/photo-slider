@@ -1,7 +1,9 @@
 import React from 'react';
 import './App.scss';
+import { Route } from 'react-router'
 import Navbar from './components/Navbar/Navbar'
 import Slider from './components/Slider/Slider'
+import AddPhoto from './components/AddPhoto/AddPhoto'
 import PhotoContextProvider from './contexts/PhotoContext';
 
 function App() {
@@ -9,7 +11,8 @@ function App() {
         <div className="App">
             <PhotoContextProvider>
                 <Navbar />
-                <Slider />
+                <Route exact path="/" component={Slider} />
+                <Route path="/addphoto" component={AddPhoto} />
             </PhotoContextProvider>
         </div>
     );
