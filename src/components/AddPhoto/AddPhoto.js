@@ -1,9 +1,16 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useRef } from 'react'
 import { PhotoContext } from '../../contexts/PhotoContext'
+import './AddPhoto.scss'
 
 const AddPhoto = () => {
 
     const { saveImage, newImage, addPhoto } = useContext(PhotoContext)
+
+    const photoInput = useRef()
+
+    const addPhotoButton = () => {
+        photoInput.current.click()
+    }
 
     const photoSelectHandler = event => {
         console.log(URL.createObjectURL(event.target.files[0]), 'event target log')
@@ -23,10 +30,11 @@ const AddPhoto = () => {
 
     return (
         <form className="add-photo" onSubmit={fileToLocalStorage}>
-            <input type="file" onChange={photoSelectHandler} />
-            <input name="text" id="text" />
-            <input name="category" id="category" />
-            <button type="submit">Save</button>
+            <input className="add-photo__form-input" style={{display: 'none'}} type="file" onChange={photoSelectHandler} ref={photoInput} />
+            <button className="add-photo__form-input navbar__button" type="button" onClick={addPhotoButton}>pick photo</button>
+            <input className="add-photo__form-input" name="text" id="text" placeholder="type some text" />
+            <input className="add-photo__form-input" name="category" id="category" placeholder="add category" />
+            <button className="add-photo__form-input navbar__button" type="submit">Save</button>
         </form>
     )
 }
