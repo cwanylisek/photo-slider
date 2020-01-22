@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/photo-slider/static/css/main.797f5d45.chunk.css",
+    "main.js": "/photo-slider/static/js/main.9e5c2840.chunk.js",
+    "main.js.map": "/photo-slider/static/js/main.9e5c2840.chunk.js.map",
+    "runtime-main.js": "/photo-slider/static/js/runtime-main.317c275d.js",
+    "runtime-main.js.map": "/photo-slider/static/js/runtime-main.317c275d.js.map",
+    "static/js/2.53b32ed6.chunk.js": "/photo-slider/static/js/2.53b32ed6.chunk.js",
+    "static/js/2.53b32ed6.chunk.js.map": "/photo-slider/static/js/2.53b32ed6.chunk.js.map",
+    "index.html": "/photo-slider/index.html",
+    "precache-manifest.2975449c6cdfbedebb62a8dcde1dc297.js": "/photo-slider/precache-manifest.2975449c6cdfbedebb62a8dcde1dc297.js",
+    "service-worker.js": "/photo-slider/service-worker.js",
+    "static/css/main.797f5d45.chunk.css.map": "/photo-slider/static/css/main.797f5d45.chunk.css.map",
+    "static/js/2.53b32ed6.chunk.js.LICENSE": "/photo-slider/static/js/2.53b32ed6.chunk.js.LICENSE",
+    "static/media/kircholm.jpg": "/photo-slider/static/media/kircholm.3df142d5.jpg",
+    "static/media/nature.jpg": "/photo-slider/static/media/nature.462ac6ad.jpg",
+    "static/media/ramen.jpg": "/photo-slider/static/media/ramen.bcadb9e7.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.317c275d.js",
+    "static/js/2.53b32ed6.chunk.js",
+    "static/css/main.797f5d45.chunk.css",
+    "static/js/main.9e5c2840.chunk.js"
+  ]
+}
