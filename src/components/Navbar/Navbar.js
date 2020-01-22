@@ -7,7 +7,7 @@ import './Navbar.scss'
 
 const Navbar = () => {
 
-    const { photos } = useContext(PhotoContext)
+    const { photos, filterPhotos } = useContext(PhotoContext)
 
     const options = photos.map(item => ({
         value: item.category,
@@ -18,25 +18,30 @@ const Navbar = () => {
         control: (provided, state) => ({
             ...provided,
             background: '#FDFDFD',
-            border: '1px solid rgba(0, 83, 177, 0.25)',
+            border: '1px solid rgba(248, 41, 73, 0.25)',
             boxSizing: 'border-box',
             borderRadius: '20px',
             width: '90%',
             height: '32px',
-            padding: '0 15px',
-            marginTop: '15px'
+            padding: '0 15px'
         }),
         menu: (provided) => ({
             ...provided,
             width: '80%',
             zIndex: '110',
+        }),
+        container: (provided) => ({
+            ...provided,
+            width: '30%'
         })
     }
 
     const { selectedOption } = [];
        
-    const handleChange = selectedOption => {
-        console.log(`Option selected:`, selectedOption.value);
+    const handleFilter = selectedOption => {
+        console.log(`Option selected:`, selectedOption.value)
+        const categorySelected = selectedOption.value
+        filterPhotos(categorySelected)
     };
 
     const categories = photos.map((photo) => <li key={photo.id}>{photo.category}</li>)
@@ -52,12 +57,20 @@ const Navbar = () => {
                     {categories}
                 </ul>
             </div>
-            {/* <button className="navbar__button">dropdown filter</button> */}
             <Select
                 value={selectedOption}
-                onChange={handleChange}
+                onChange={handleFilter}
                 options={options}
                 styles={styles}
+                theme={theme => ({
+                    ...theme,
+                    borderRadius: 0,
+                    colors: {
+                      ...theme.colors,
+                      primary25: '#f82949',
+                      primary: '#f82949',
+                    },
+                  })}
             />
             {routeButton}
         </nav>

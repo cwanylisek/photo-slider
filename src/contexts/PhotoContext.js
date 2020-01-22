@@ -23,6 +23,11 @@ const PhotoContextProvider = (props) => {
         setPhoto([...photos, {photo, text, category, id: uuid() }])
     }
 
+    const filterPhotos = (category) => {
+        setPhoto(photos.filter(photo => photo.category == category))
+        console.log(photos)
+    }
+
     const rightArrow = () => {
         if (photoIndex === photos.length - 1) {
             setIndex(0)
@@ -48,7 +53,7 @@ const PhotoContextProvider = (props) => {
     }
 
     return (
-        <PhotoContext.Provider value={{ photos, addPhoto, rightArrow, leftArrow, photoIndex, translateValue, newImage, saveImage }}>
+        <PhotoContext.Provider value={{ photos, filterPhotos, addPhoto, rightArrow, leftArrow, photoIndex, translateValue, newImage, saveImage }}>
             {props.children}
         </PhotoContext.Provider>
     )
