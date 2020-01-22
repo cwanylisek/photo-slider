@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 import kircholm from '../assets/img/kircholm.jpg'
 import landscape from '../assets/img/nature.jpg'
 import ramen from '../assets/img/ramen.jpg'
@@ -8,9 +8,9 @@ export const PhotoContext = createContext()
 
 const PhotoContextProvider = (props) => {
     const [photos, setPhoto] = useState([
-        { photo: kircholm, text: 'randomtext 1', category: 'art', id: 1 },
-        { photo: landscape, text: 'randomtext 2', category: 'nature', id: 2 },
-        { photo: ramen, text: 'randomtext 3', category: 'food', id: 3 }
+        { photo: kircholm, text: 'lorem ipsum 1', category: 'art', id: 1 },
+        { photo: landscape, text: 'lorem ipsum 2', category: 'nature', id: 2 },
+        { photo: ramen, text: 'lorem ipsum 3', category: 'food', id: 3 }
     ])
 
     const [photoIndex, setIndex] = useState(0)
@@ -20,7 +20,7 @@ const PhotoContextProvider = (props) => {
     const [newImage, setNewImage] = useState({})
 
     const addPhoto = (photo, text, category) => {
-        setPhoto([...photos, {photo, text, category, id: uuid() }])
+        setPhoto([...photos, { photo, text, category, id: uuid() }])
     }
 
     const filterPhotos = (category) => {
@@ -32,7 +32,7 @@ const PhotoContextProvider = (props) => {
         let splicedPhotos = photos
         splicedPhotos.splice(index, 1)
         setPhoto([...splicedPhotos])
-        
+
     }
 
     const rightArrow = () => {
@@ -57,6 +57,16 @@ const PhotoContextProvider = (props) => {
     const saveImage = (newImage) => {
         setNewImage(newImage)
     }
+
+    useEffect(() => {
+        const imageData = localStorage.getItem('photoBase64')
+        if (imageData != null) {
+            fetch(imageData)
+                .then(res => res.blob())
+                .then(res => setPhoto(photos => [...photos, { photo: URL.createObjectURL(res), text: 'from LS', category: 'LS', id: uuid() }]))
+        }
+        localStorage.removeItem('photoBase64')
+    }, [])
 
     return (
         <PhotoContext.Provider value={{ photos, deletePhoto, filterPhotos, addPhoto, rightArrow, leftArrow, photoIndex, translateValue, newImage, saveImage }}>

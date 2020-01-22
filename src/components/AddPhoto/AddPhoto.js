@@ -15,16 +15,26 @@ const AddPhoto = () => {
     const photoSelectHandler = event => {
         console.log(URL.createObjectURL(event.target.files[0]), 'event target log')
         saveImage(URL.createObjectURL(event.target.files[0]))
+        getBase64(event.target.files[0]).then(Base64 => {
+            localStorage["photoBase64"] = Base64
+            console.debug('file stored to localS', Base64)
+        })
+    }
+
+    const getBase64 = (file) => {
+        return new Promise((resolve,reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+            reader.readAsDataURL(file);
+        });
     }
 
     const fileToLocalStorage = (e) => {
         e.preventDefault()
         e.persist()
         console.log(e.target.text.value, 'id', e.target.category.value, 'category')
-        //const imageData = new FormData()
-        console.log(newImage.name, 'newImage in save button')
-        //imageData.append('image', newImage, newImage.name)
-        //console.log(imageData, 'imagedata')
+   
         addPhoto(newImage, e.target.text.value, e.target.category.value)
     }
 

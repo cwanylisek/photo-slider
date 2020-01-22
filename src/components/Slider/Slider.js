@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext} from 'react'
 import { PhotoContext } from '../../contexts/PhotoContext'
 import Slide from '../Slide/Slide'
 import './Slider.scss'
@@ -7,12 +7,7 @@ const Slider = () => {
 
     const { photos, leftArrow, rightArrow, translateValue, deletePhoto } = useContext(PhotoContext)
 
-    useEffect(() => {
-        console.log('rerender')
-    })
-
     const deletePhotoHandler = (id) => {
-        console.log('clicked', id)
         deletePhoto(id)
     }
 

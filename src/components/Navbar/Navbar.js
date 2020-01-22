@@ -44,7 +44,7 @@ const Navbar = () => {
         filterPhotos(categorySelected)
     };
 
-    const categories = photos.map((photo) => <li key={photo.id}>{photo.category}</li>)
+    //const categories = photos.map((photo) => <li key={photo.id}>{photo.category}</li>)
 
     const location = useLocation()
     let routeButton
@@ -52,11 +52,11 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-            <div className="navbar__category">currently this categories are available:
+            {/* <div className="navbar__category">currently this categories are available:
                 <ul>
                     {categories}
                 </ul>
-            </div>
+            </div> */}
             <Select
                 value={selectedOption}
                 onChange={handleFilter}
