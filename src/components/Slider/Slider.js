@@ -21,8 +21,8 @@ const Slider = () => {
             <div className="slider__container" style={slideAnimation}>
                 {slide}
             </div>
-            <button className="slider__left-arrow" onClick={leftArrow}>strzałka w lewo</button>
-            <button className="slider__right-arrow" onClick={rightArrow}>strzałka w prawo</button> 
+            <div className="slider__arrow slider__arrow-left" onClick={leftArrow}></div>
+            <div className="slider__arrow slider__arrow-right" onClick={rightArrow}></div> 
         </div>
     )
 

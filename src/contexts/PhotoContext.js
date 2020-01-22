@@ -19,6 +19,10 @@ const PhotoContextProvider = (props) => {
 
     const [newImage, setNewImage] = useState({})
 
+    const addPhoto = (photo, text, category) => {
+        setPhoto([...photos, {photo, text, category, id: uuid() }])
+    }
+
     const rightArrow = () => {
         if (photoIndex === photos.length - 1) {
             setIndex(0)
@@ -44,7 +48,7 @@ const PhotoContextProvider = (props) => {
     }
 
     return (
-        <PhotoContext.Provider value={{ photos, rightArrow, leftArrow, photoIndex, translateValue, newImage, saveImage }}>
+        <PhotoContext.Provider value={{ photos, addPhoto, rightArrow, leftArrow, photoIndex, translateValue, newImage, saveImage }}>
             {props.children}
         </PhotoContext.Provider>
     )

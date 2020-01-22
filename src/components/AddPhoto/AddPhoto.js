@@ -3,25 +3,31 @@ import { PhotoContext } from '../../contexts/PhotoContext'
 
 const AddPhoto = () => {
 
-    const { saveImage, newImage } = useContext(PhotoContext)
+    const { saveImage, newImage, addPhoto } = useContext(PhotoContext)
 
     const photoSelectHandler = event => {
-        console.log(event.target.files[0], 'event target log')
-        saveImage(event.target.files[0])
+        console.log(URL.createObjectURL(event.target.files[0]), 'event target log')
+        saveImage(URL.createObjectURL(event.target.files[0]))
     }
 
-    const fileToLocalStorage = () => {
-        const imageData = new FormData()
-        console.log(newImage, 'newImage in save button')
-        imageData.append('image', newImage, newImage.name)
-        console.log(imageData, 'imagedata')
+    const fileToLocalStorage = (e) => {
+        e.preventDefault()
+        e.persist()
+        console.log(e.target.text.value, 'id', e.target.category.value, 'category')
+        //const imageData = new FormData()
+        console.log(newImage.name, 'newImage in save button')
+        //imageData.append('image', newImage, newImage.name)
+        //console.log(imageData, 'imagedata')
+        addPhoto(newImage, e.target.text.value, e.target.category.value)
     }
 
     return (
-        <div className="add-photo">
+        <form className="add-photo" onSubmit={fileToLocalStorage}>
             <input type="file" onChange={photoSelectHandler} />
-            <button onClick={fileToLocalStorage}>Save</button>
-        </div>
+            <input name="text" id="text" />
+            <input name="category" id="category" />
+            <button type="submit">Save</button>
+        </form>
     )
 }
 

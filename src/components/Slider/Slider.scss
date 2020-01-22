@@ -16,13 +16,28 @@
         width: 100%;
         border-radius: 15px;
     }
-    &__right-arrow {
-        position: relative;
-        bottom: 250px;
-        left: 300px;
-    }
-    &__left-arrow {
-        position: relative;
-        bottom: 250px;
+    &__arrow {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-color: transparent #f82949 #f82949 transparent;
+        border-style: solid;
+        border-width: 4px;
+        margin-top: -4px;
+        -webkit-transition: all .08s ease-in-out;
+        transition: all .08s ease-in-out;
+        cursor: pointer;
+        &-right {
+            position: relative;
+            bottom: 275px;
+            left: 450px;
+            transform: rotate(-45deg);
+        }
+        &-left {
+            position: relative;
+            bottom: 250px;
+            left: 20px;
+            transform: rotate(135deg);
+        }
     }
 }
