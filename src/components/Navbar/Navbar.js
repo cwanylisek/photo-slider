@@ -1,4 +1,4 @@
-import React, { useContext, use } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { PhotoContext } from '../../contexts/PhotoContext'
@@ -62,6 +62,7 @@ const Navbar = () => {
                 onChange={handleFilter}
                 options={options}
                 styles={styles}
+                placeholder={'filter photos'}
                 theme={theme => ({
                     ...theme,
                     borderRadius: 0,

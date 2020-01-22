@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { PhotoContext } from '../../contexts/PhotoContext'
 import './AddPhoto.scss'
 

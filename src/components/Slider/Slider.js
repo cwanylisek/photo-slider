@@ -5,10 +5,25 @@ import './Slider.scss'
 
 const Slider = () => {
 
-    const { photos, leftArrow, rightArrow, translateValue } = useContext(PhotoContext)
+    const { photos, leftArrow, rightArrow, translateValue, deletePhoto } = useContext(PhotoContext)
 
-    const slide = photos.map((photo) => (
-        <Slide key={photo.id} image={photo.photo} text={photo.text} category={photo.category} />
+    useEffect(() => {
+        console.log('rerender')
+    })
+
+    const deletePhotoHandler = (id) => {
+        console.log('clicked', id)
+        deletePhoto(id)
+    }
+
+    const slide = photos.map((photo, i) => (
+        <Slide 
+            key={photo.id} 
+            image={photo.photo} 
+            text={photo.text} 
+            category={photo.category} 
+            click={() => deletePhotoHandler(i)} 
+        />
     ))
 
     const slideAnimation = {

@@ -24,7 +24,14 @@ const PhotoContextProvider = (props) => {
     }
 
     const filterPhotos = (category) => {
-        setPhoto(photos.filter(photo => photo.category == category))
+        setPhoto(photos.filter(photo => photo.category === category))
+    }
+
+    const deletePhoto = (index) => {
+        const splicedPhotos = photos
+        splicedPhotos.splice(index, 1)
+        console.log(splicedPhotos)
+        setPhoto(splicedPhotos)
         console.log(photos)
     }
 
@@ -49,11 +56,10 @@ const PhotoContextProvider = (props) => {
 
     const saveImage = (newImage) => {
         setNewImage(newImage)
-        console.log(newImage, 'image in state')
     }
 
     return (
-        <PhotoContext.Provider value={{ photos, filterPhotos, addPhoto, rightArrow, leftArrow, photoIndex, translateValue, newImage, saveImage }}>
+        <PhotoContext.Provider value={{ photos, deletePhoto, filterPhotos, addPhoto, rightArrow, leftArrow, photoIndex, translateValue, newImage, saveImage }}>
             {props.children}
         </PhotoContext.Provider>
     )
