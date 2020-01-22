@@ -28,11 +28,11 @@ const PhotoContextProvider = (props) => {
     }
 
     const deletePhoto = (index) => {
-        const splicedPhotos = photos
+
+        let splicedPhotos = photos
         splicedPhotos.splice(index, 1)
-        console.log(splicedPhotos)
-        setPhoto(splicedPhotos)
-        console.log(photos)
+        setPhoto([...splicedPhotos])
+        
     }
 
     const rightArrow = () => {
