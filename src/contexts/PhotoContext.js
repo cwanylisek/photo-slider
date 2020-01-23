@@ -19,6 +19,8 @@ const PhotoContextProvider = (props) => {
 
     const [newImage, setNewImage] = useState({})
 
+    const [sliderWidth, setWidth] = useState(0)
+
     const addPhoto = (photo, text, category) => {
         setPhoto([...photos, { photo, text, category, id: uuid() }])
     }
@@ -41,7 +43,7 @@ const PhotoContextProvider = (props) => {
             setTranslate(0)
         } else {
             setIndex(photoIndex + 1)
-            setTranslate(translateValue + -(500))
+            setTranslate(translateValue + -(sliderWidth))
         }
     }
 
@@ -50,12 +52,16 @@ const PhotoContextProvider = (props) => {
             return
         } else {
             setIndex(photoIndex - 1)
-            setTranslate(translateValue + 500)
+            setTranslate(translateValue + sliderWidth)
         }
     }
 
     const saveImage = (newImage) => {
         setNewImage(newImage)
+    }
+
+    const getSliderWidth = (width) => {
+        setWidth(width)
     }
 
     useEffect(() => {
@@ -69,7 +75,7 @@ const PhotoContextProvider = (props) => {
     }, [])
 
     return (
-        <PhotoContext.Provider value={{ photos, deletePhoto, filterPhotos, addPhoto, rightArrow, leftArrow, photoIndex, translateValue, newImage, saveImage }}>
+        <PhotoContext.Provider value={{ photos, getSliderWidth, deletePhoto, filterPhotos, addPhoto, rightArrow, leftArrow, photoIndex, translateValue, newImage, saveImage }}>
             {props.children}
         </PhotoContext.Provider>
     )

@@ -32,7 +32,7 @@ const Navbar = () => {
         }),
         container: (provided) => ({
             ...provided,
-            width: '30%'
+            width: '195px'
         })
     }
 

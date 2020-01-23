@@ -1,11 +1,11 @@
-import React, { useContext} from 'react'
+import React, { useContext, useEffect } from 'react'
 import { PhotoContext } from '../../contexts/PhotoContext'
 import Slide from '../Slide/Slide'
 import './Slider.scss'
 
 const Slider = () => {
 
-    const { photos, leftArrow, rightArrow, translateValue, deletePhoto } = useContext(PhotoContext)
+    const { photos, leftArrow, rightArrow, translateValue, deletePhoto, getSliderWidth } = useContext(PhotoContext)
 
     const deletePhotoHandler = (id) => {
         deletePhoto(id)
@@ -25,6 +25,13 @@ const Slider = () => {
         transform: `translateX(${translateValue}px)`,
         transition: 'transform ease-in-out 0.2s'
     }
+
+    useEffect(() => {
+        const responsiveSliderWidth = document.querySelector(".slider").clientWidth
+        getSliderWidth(responsiveSliderWidth)
+    })
+
+
 
     return (
         <div className="slider"> 
