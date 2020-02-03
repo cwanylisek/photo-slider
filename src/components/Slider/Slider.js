@@ -12,12 +12,12 @@ const Slider = () => {
     }
 
     const slide = photos.map((photo, i) => (
-        <Slide 
-            key={photo.id} 
-            image={photo.photo} 
-            text={photo.text} 
-            category={photo.category} 
-            click={() => deletePhotoHandler(i)} 
+        <Slide
+            key={photo.id}
+            image={photo.photo}
+            text={photo.text}
+            category={photo.category}
+            click={() => deletePhotoHandler(i)}
         />
     ))
 
@@ -34,12 +34,12 @@ const Slider = () => {
 
 
     return (
-        <div className="slider"> 
+        <div className="slider">
             <div className="slider__container" style={slideAnimation}>
                 {slide}
             </div>
             <div className="slider__arrow slider__arrow-left" onClick={leftArrow}></div>
-            <div className="slider__arrow slider__arrow-right" onClick={rightArrow}></div> 
+            <div className="slider__arrow slider__arrow-right" onClick={rightArrow}></div>
         </div>
     )
 

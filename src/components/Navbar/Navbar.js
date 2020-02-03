@@ -36,10 +36,9 @@ const Navbar = () => {
         })
     }
 
-    const { selectedOption } = [];
-       
+    const { selectedOption } = []
+
     const handleFilter = selectedOption => {
-        console.log(`Option selected:`, selectedOption.value)
         const categorySelected = selectedOption.value
         filterPhotos(categorySelected)
     };
@@ -67,11 +66,11 @@ const Navbar = () => {
                     ...theme,
                     borderRadius: 0,
                     colors: {
-                      ...theme.colors,
-                      primary25: '#f82949',
-                      primary: '#f82949',
+                        ...theme.colors,
+                        primary25: '#f82949',
+                        primary: '#f82949',
                     },
-                  })}
+                })}
             />
             {routeButton}
         </nav>

@@ -7,7 +7,7 @@ const Slide = ({ image, text, category, click }) => {
         backgroundRepeat: 'no-repeat',
     }
 
-return (
+    return (
         <div className="slider__photo" style={styles}>
             <h1 className="slider__text">{text}</h1>
             <h2 className="slider__category">{category}</h2>
